@@ -29,9 +29,10 @@ for dirpath, dirs, files in os.walk(r'C:\Work\Dev\P472 Production Livelink'):
 print(fileToParseList)
 currentTime = datetime.datetime.now()
 try:
-    filesProcessed = open('files_processed.txt', 'w')
-    filesProcessed.write(f"Last Access [{currentTime}]")
-    filesProcessed.writelines(fileToParseList)
+    filesProcessed = open('files_to_parse.txt', 'w')
+    filesProcessed.write(f"Last Access [{currentTime}]\n")
+    for item in fileToParseList:
+        filesProcessed.write(f"{item}\n")
 except Exception as e:
     print(f"Error maintaining file list {e}")
 finally:
